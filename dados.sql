@@ -3,6 +3,21 @@
 -- Área por estado: https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_área
 -- População por estado (prévio censo 2022): https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_população
 
+-- Como a matricula foi criada no BD como (serial) já que é PK, ao inserir um novo aluno, a marícula não pode ser modificada, 
+-- portanto ela tem q ser Null. Para isso, ao criar a classe aluno, a matrícua precisa receber NULL e 
+-- o (int) não pode ser aplicado, por ser primitivo. Portanto, é necessário o uso do INTEGER.
+drop table if exists aluno;
+
+create table aluno (
+    matricula serial not null primary key,
+    nome varchar(120) not null,
+    nota1 decimal(10, 2),
+    nota2 decimal(10, 2),
+    nota3 decimal(10, 2)
+
+);
+
+
 drop table if exists item_venda;
 drop table if exists venda;
 
