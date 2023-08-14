@@ -11,13 +11,19 @@ public class Principal {
         try(var conn = ConnectionManager.getConnection()){
             var alunoDAO = new AlunoDAO(conn);
             var aluno = new Aluno();
-            aluno.setNome("Bruno");
-            alunoDAO.insert(aluno);
-            System.out.println("Aluno inserido com sucesso");
+            aluno.setMatricula(1);
+
+            //aluno.setNome("Aurora");
+            //alunoDAO.insert(aluno);
+            //System.out.println("Aluno inserido com sucesso");
+
+            System.out.println("matricula " + aluno.getMatricula());
+            double nota = 8;
+            alunoDAO.insertNota(2, nota, aluno.getMatricula());            
         } catch(SQLException e){
             System.err.println("Não foi possivel conectar ao BD");
         }catch(RuntimeException e){
-            System.err.println("Não foi possivel inserir o aluno no BD");
+            System.err.println(e.getMessage());
         }
     }
 }
