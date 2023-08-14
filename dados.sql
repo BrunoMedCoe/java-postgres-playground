@@ -3,6 +3,20 @@
 -- Área por estado: https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_área
 -- População por estado (prévio censo 2022): https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_população
 
+
+-- foi preciso criar um (id) ADD
+-- todos possuem (not null) porque são dados que precisam ser fornecidos.
+drop table if exists transacao;
+
+create table transacao(
+    id serial not null primary key,
+    cliente varchar(120) not null,
+    valor decimal(10, 2) not null,
+    moeda varchar(3) not null,
+    tipo char not null
+);
+
+
 -- Como a matricula foi criada no BD como (serial) já que é PK, ao inserir um novo aluno, a marícula não pode ser modificada, 
 -- portanto ela tem q ser Null. Para isso, ao criar a classe aluno, a matrícua precisa receber NULL e 
 -- o (int) não pode ser aplicado, por ser primitivo. Portanto, é necessário o uso do INTEGER.
